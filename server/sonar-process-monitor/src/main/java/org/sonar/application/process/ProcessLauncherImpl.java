@@ -106,7 +106,6 @@ public class ProcessLauncherImpl implements ProcessLauncher {
       IOUtils.copy(getClass().getResourceAsStream("jvm.options"), new FileOutputStream(new File(confDir, "jvm.options")));
       esCommand.getLog4j2Properties().store(new FileOutputStream(new File(confDir, "log4j2.properties")), "log42 properties file for ES bundled in SonarQube");
     } catch (IOException e) {
-      e.printStackTrace();
       throw new IllegalStateException("Failed to write ES configuration files", e);
     }
   }
