@@ -152,7 +152,7 @@ public class ProcessLauncherImpl implements ProcessLauncher {
     try {
       Files.write(jvmOptionsFile, jvmOptionsContent.getBytes(Charset.forName("UTF-8")));
     } catch (IOException e) {
-      throw new RuntimeException("Cannot write Elasticsearch jvm options file", e);
+      throw new IllegalStateException("Cannot write Elasticsearch jvm options file", e);
     }
   }
 
