@@ -164,7 +164,7 @@ public class EsProcessMonitor extends AbstractProcessMonitor {
   }
 
   private TransportClient buildTransportClient() {
-    org.elasticsearch.common.settings.Settings.Builder esSettings = org.elasticsearch.common.settings.Settings.builder();
+    Settings.Builder esSettings = Settings.builder();
 
     // mandatory property defined by bootstrap process
     esSettings.put("cluster.name", esCommand.getClusterName());
