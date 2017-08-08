@@ -143,7 +143,9 @@ public class ProcessLauncherImpl implements ProcessLauncher {
     Path jvmOptionsFile = esCommand.getJvmOptionsFile();
     String jvmOptions = esCommand.getJvmOptions()
       .stream()
-      .map(s -> s.split(" (?=-)"))// FIXME this pattern does not allow escaping
+
+      // we do not expect the user to use parameters containing " -"
+      .map(s -> s.split(" (?=-)"))
       .flatMap(Arrays::stream)
       .collect(Collectors.joining("\n"));
     String jvmOptionsContent = ELASTICSEARCH_JVM_OPTIONS_HEADER + jvmOptions;
