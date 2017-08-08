@@ -81,7 +81,9 @@ public class ProcessLauncherImpl implements ProcessLauncher {
     try {
       writeConfFiles(esCommand);
       ProcessBuilder processBuilder = create(esCommand);
-      LOG.info("Launch process[{}]: {}", processId.getKey(), String.join(" ", processBuilder.command()));
+      if (LOG.isInfoEnabled()) {
+        LOG.info("Launch process[{}]: {}", processId.getKey(), String.join(" ", processBuilder.command()));
+      }
 
       process = processBuilder.start();
 
