@@ -348,7 +348,7 @@ public class NewIndex {
       Map<String, Object> hash = new TreeMap<>();
       hash.putAll(ImmutableMap.of(
         "type", getFieldType(),
-        "index", disableSearch ? INDEX_NOT_SEARCHABLE : INDEX_SEARCHABLE,
+        INDEX, disableSearch ? INDEX_NOT_SEARCHABLE : INDEX_SEARCHABLE,
         "norms", valueOf(!disableNorms),
         "store", valueOf(store)));
       if (getFieldData()) {
@@ -390,7 +390,7 @@ public class NewIndex {
 
       multiFields.put(fieldName, ImmutableMap.of(
         "type", getFieldType(),
-        "index", INDEX_SEARCHABLE,
+        INDEX, INDEX_SEARCHABLE,
         "norms", "false",
         "store", valueOf(store)));
       hash.put("fields", multiFields);
@@ -471,7 +471,7 @@ public class NewIndex {
     public NestedFieldBuilder addKeywordField(String fieldName) {
       return setProperty(fieldName, ImmutableMap.of(
         "type", FIELD_TYPE_KEYWORD,
-        "index", INDEX_SEARCHABLE));
+        INDEX, INDEX_SEARCHABLE));
     }
 
     public NestedFieldBuilder addDoubleField(String fieldName) {
