@@ -122,7 +122,9 @@ public class ProcessLauncherImpl implements ProcessLauncher {
       ProcessCommands commands = allProcessesCommands.createAfterClean(processId.getIpcIndex());
 
       ProcessBuilder processBuilder = create(javaCommand);
-      LOG.info("Launch process[{}]: {}", processId.getKey(), String.join(" ", processBuilder.command()));
+      if (LOG.isInfoEnabled()) {
+        LOG.info("Launch process[{}]: {}", processId.getKey(), String.join(" ", processBuilder.command()));
+      }
       process = processBuilder.start();
       return new ProcessCommandsProcessMonitor(process, processId, commands);
     } catch (Exception e) {
