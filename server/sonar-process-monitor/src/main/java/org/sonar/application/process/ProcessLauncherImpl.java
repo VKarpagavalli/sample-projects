@@ -197,7 +197,6 @@ public class ProcessLauncherImpl implements ProcessLauncher {
       props.putAll(javaCommand.getArguments());
       props.setProperty(PROPERTY_PROCESS_KEY, javaCommand.getProcessId().getKey());
       props.setProperty(PROPERTY_PROCESS_INDEX, Integer.toString(javaCommand.getProcessId().getIpcIndex()));
-      // FIXME is it the responsibility of child process to have this timeout (too) ?
       props.setProperty(PROPERTY_TERMINATION_TIMEOUT, "60000");
       props.setProperty(PROPERTY_SHARED_PATH, tempDir.getAbsolutePath());
       try (OutputStream out = new FileOutputStream(propertiesFile)) {
