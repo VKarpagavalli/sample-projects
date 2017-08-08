@@ -139,7 +139,7 @@ public class ProcessLauncherImpl implements ProcessLauncher {
     return create(esCommand, commands);
   }
 
-  private void writeJvmOptions(EsCommand esCommand) {
+  private static void writeJvmOptions(EsCommand esCommand) {
     Path jvmOptionsFile = esCommand.getJvmOptionsFile();
     String jvmOptions = esCommand.getJvmOptions()
       .stream()
